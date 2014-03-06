@@ -12,7 +12,6 @@ gem 'cancan'
 gem 'devise'
 gem 'figaro'
 gem 'haml-rails'
-gem 'pg'
 gem 'rolify'
 gem 'simple_form'
 gem 'newrelic_rpm'
@@ -36,4 +35,5 @@ end
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'
+  gem 'pg'
 end
