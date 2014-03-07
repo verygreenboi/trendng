@@ -1,0 +1,29 @@
+%a
+	%strong
+		%i.glyphicon.glyphicon-dashboard
+		My Dashboard
+%hr/
+
+.row
+	.col-md-7
+		.well
+			Inbox Messages
+			%span.badge.pull-right
+				3
+		%hr/
+		.panel.panel-default
+			.panel-heading
+				%h4 Account Status
+			.panel-body
+				%small
+					Complete
+				.progress
+					.progress-bar.progress-bar-success{:role => "progressbar", :style => "width: 72%", :aria => {:valuenow => 72, :valuemin => 0, :valuemax => 100}}
+						%span.sr-only
+							72% Complete
+				%small
+					In progress
+				.progress
+					.progress-bar.progress-bar-info{:role => "progressbar", :style => "width: 20%", :aria => {:valuenow => 20, :valuemin => 0, :valuemax => 100}}
+						%span.sr-only
+							20% Complete

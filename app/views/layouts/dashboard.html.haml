@@ -1,0 +1,29 @@
+!!! 5
+%html
+	%head
+		%meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Call Center App'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Call Center App'}"}
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    
+	%body
+		%header#top-nav.navbar.navbar-inverse.navbar-static-top
+			.container
+				
+				.navbar-header
+					
+					%button.navbar-toggle{:type => "button", :data =>{:toggle => "collapse", :target => ".navbar-collapse"}}
+						%span.icon-toggle
+					
+					= link_to "Trendng.tk", root_path, class: => "navbar-brand"
+				
+				.navbar-collapse.collapse
+					%ul
+						%li
+		.container
+			= render 'layouts/messages'
+      = yield
+		%footer
+		/ JS
+		= javascript_include_tag "application", "data-turbolinks-track" => true
