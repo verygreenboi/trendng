@@ -1,0 +1,11 @@
+#headerwrap
+	.container
+		.row
+			.col-lg-6
+				%h1 Make Twitter work for You!
+				= simple_form_for @user, html: { class: "form-inline" } do |f|
+					.form-group
+						= f.input_field :email, placeholder: 'Enter your email'
+					= f.button :submit, 'Invite me!', class: 'btn btn-warning btn-lg'
+			.col-lg-6
+				= image_tag "ipad-hand.png", class: 'img-responsive'
