@@ -11,4 +11,4 @@
 		.navbar-collapse.collapse
 			%ul.nav.navbar-nav.navbar-right
 				%li
-					= link_to "Already a member?", new_user_session_path
+					= link_to "Already a member?", new_user_session_path, :data => {:no_turbolink => "true"}

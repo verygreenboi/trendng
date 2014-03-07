@@ -3,7 +3,7 @@
 	%button.navbar-toggle{:type => "button", :data =>{:toggle => "collapse", :target => ".navbar-collapse"}}
 		%span.icon-toggle
 	
-	= link_to "Trendng.tk", root_path, class: "navbar-brand"
+	= link_to "Trendng.tk", root_path, class: "navbar-brand", :data => {:no_turbolink => "true"}
 
 .navbar-collapse.collapse
 	%ul.nav.navbar-nav.navbar-right
