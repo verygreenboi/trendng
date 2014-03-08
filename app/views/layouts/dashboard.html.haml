@@ -16,7 +16,8 @@
 		.container
 			.row
 				%aside.col-md-3
-					= render 'layouts/dash/aside'
+					- unless devise_controller?
+						= render 'layouts/dash/aside'
 				.col-md-9
 					= render 'layouts/messages'
 					= yield
