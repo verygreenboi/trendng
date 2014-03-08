@@ -18,6 +18,7 @@
 			.container
 				
 				= render 'layouts/dash/nav'
+		= render 'layouts/messages'
 		- if devise_controller?
 			.container.devise
 				.row
@@ -25,7 +26,6 @@
 						- unless devise_controller?
 							= render 'layouts/dash/aside'
 					.col-md-9
-						= render 'layouts/messages'
 						= yield
 					= debug(params) if Rails.env.development?
 		- else
@@ -35,7 +35,6 @@
 					- unless devise_controller?
 						= render 'layouts/dash/aside'
 				.col-md-9
-					= render 'layouts/messages'
 					= yield
 				= debug(params) if Rails.env.development?
 		%footer
