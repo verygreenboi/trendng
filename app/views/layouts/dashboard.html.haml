@@ -5,6 +5,12 @@
 		%title= content_for?(:title) ? yield(:title) : 'TrendNG'
 		%meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Call Center App'}"}
 		= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+		<![endif]-->
 		= csrf_meta_tags
     
 	%body
@@ -12,15 +18,26 @@
 			.container
 				
 				= render 'layouts/dash/nav'
-
-		.container
-			.row
+		- if devise_controller?
+			.container.devise
+				.row
+					%aside.col-md-3
+						- unless devise_controller?
+							= render 'layouts/dash/aside'
+					.col-md-9
+						= render 'layouts/messages'
+						= yield
+					= debug(params) if Rails.env.development?
+		- else
+			.container
+				.row
 				%aside.col-md-3
 					- unless devise_controller?
 						= render 'layouts/dash/aside'
 				.col-md-9
 					= render 'layouts/messages'
 					= yield
+				= debug(params) if Rails.env.development?
 		%footer
 		-# JS
 		= javascript_include_tag "application", "data-turbolinks-track" => true

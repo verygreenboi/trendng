@@ -3,21 +3,21 @@
 	%button.navbar-toggle{:type => "button", :data =>{:toggle => "collapse", :target => ".navbar-collapse"}}
 		%span.icon-toggle
 	
-	= link_to "Trendng.tk", root_path, class: "navbar-brand", :data => {:no_turbolink => "true"}
-
-.navbar-collapse.collapse
-	%ul.nav.navbar-nav.navbar-right
-		%li.dropdown
-			%a.dropdown-toggle{:role => "button", :href =>"#", :data => {:toggle => "dropdown"}}
-				%i.glyphicon.glyphicon-user
-				Admin
-				%span.caret
-			%ul#g-account-menu.dropdown-menu{:role =>"menu"}
-				%li
-					- # User show path
-					= link_to "My Profile"
-				%li
-					- # Remember Delete method
-					%a 
-						%i.glyphicon.glyphicon-lock
-							Logout
+	= link_to "TrendNG", root_path, class: "navbar-brand", :data => {:no_turbolink => "true"}
+- unless devise_controller?
+	.navbar-collapse.collapse
+		%ul.nav.navbar-nav.navbar-right
+			%li.dropdown
+				%a.dropdown-toggle{:role => "button", :href =>"#", :data => {:toggle => "dropdown"}}
+					%i.glyphicon.glyphicon-user
+					Admin
+					%span.caret
+				%ul#g-account-menu.dropdown-menu{:role =>"menu"}
+					%li
+						- # User show path
+						= link_to "My Profile"
+					%li
+						- # Remember Delete method
+						%a 
+							%i.glyphicon.glyphicon-lock
+								Logout
