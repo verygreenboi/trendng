@@ -2,19 +2,43 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #dashboard{
-	header{
-		background-color: #3498db;
-		border-color: transparent;
-		.navbar-header{
-			.navbar-brand{
-				color: white;
-				font-family: 'Lato', sans-serif;
-				font-size: 18px;
-				font-weight: bold;
+	body{
+		background-color: #f2f2f2;
+		font-family: 'Lato', sans-serif;
+		font-weight: 300;
+		font-size: 16px;
+		color: #555;
+		-webkit-font-smoothing: antialiased;
+		-webkit-overflow-scrolling: touch;
+		header{
+			background-color: #3498db;
+			border-color: transparent;
+			.navbar-right{
+			 a{
+					color: #ECEEFC;
+				}
+				&:hover{
+					a{
+						color: #FFFFFF;
+					}
+				}	
+				.dropdown-menu{
+					a{
+						color: #333333;
+					}
+				}			
+			}
+			.navbar-header{
+				.navbar-brand{
+					color: white;
+					font-family: 'Lato', sans-serif;
+					font-size: 18px;
+					font-weight: bold;
+				}
 			}
 		}
-	}
-	.list-inline{
-		margin-top: 10px;
+		.list-inline{
+			margin-top: 10px;
+		}
 	}
 }

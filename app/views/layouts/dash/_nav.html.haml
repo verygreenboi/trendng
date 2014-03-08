@@ -18,6 +18,6 @@
 						= link_to "My Profile"
 					%li
 						- # Remember Delete method
-						%a 
+						%a{:href => "#{destroy_user_session_url}", :data =>{:method=>'delete'}} 
 							%i.glyphicon.glyphicon-lock
 								Logout

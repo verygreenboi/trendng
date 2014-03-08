@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :trackable, :validatable
 
+  # Username Login
   attr_accessor :login
 
   def login=(login)
@@ -46,4 +47,42 @@ class User < ActiveRecord::Base
 	    where(conditions).first
 	  end
 	end
+
+  # Override Password requirement When account is created
+
+  validates_confirmation_of :password
+
+  def password_required?
+    if !persisted?
+      !(password!="")
+    else
+      !password.nil? || !password_confirmation.nil?
+    end
+  end
+
+  # Override Devise method
+
+  def confirmation_required?
+    false
+  end
+
+  def active_for_authentication?
+    confirmed? || confirmation_period_valid?
+  end
+
+  def send_reset_password_instructions
+    if self.confirmed?
+      super
+    else
+      error.add :base, "You must receive an invitation before you set your password."
+    end
+  end
+
+  private
+
+    def send_welcome_email
+      return if email.Include?(ENV['ADMIN_EMAIL'])
+      UserMailer.welcome_email(self).deliver
+    end
+
 end
