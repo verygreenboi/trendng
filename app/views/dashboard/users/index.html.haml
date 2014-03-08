@@ -1,2 +1,59 @@
-%h1 Dashboard::Users#index
-%p Find me in app/views/dashboard/users/index.html.haml
+%h3 
+	Users
+.col-md-12
+	%p
+		Send Bulk Invitations:
+		= link_to "10&#183;", .html_safe, bulk_invite_path(:quantity => '10')
+		= link_to "50&#183;", .html_safe, bulk_invite_path(:quantity => '50')
+		= link_to "100&#183;", .html_safe, bulk_invite_path(:quantity => '100')
+		= link_to "500&#183;", .html_safe, bulk_invite_path(:quantity => '500')
+		= link_to "1000&#183;", .html_safe, bulk_invite_path(:quantity => '1000')
+.col-md-12
+	%table.table.tablecondensed.table-striped
+		%thead
+			%tr
+				%th
+					Username
+				%th
+					Email
+				%th
+					Requested
+				%th
+					Invitation
+				%th
+					Joined
+				%th
+					Visits
+				%th
+					Most Recent
+				%th
+					Role
+				%th
+
+				%th
+		%tbody
+			- @users.each do |user|
+				%tr
+					%td
+						= link_to user.name, user
+					%td
+						= user.email
+					%td
+						= user.created_at.to_date
+					%td
+						= (user.confirmation_token.nil? ? (link_to "Send Invitation", invite_dashboard_user_path(user), {:class => 'btn btn-xs btn-success'}):(link_to "Resend", invite_dashboard_user_path(user), {:class => 'btn btn-xs btn-warning'}))unless user.confirmed_at
+					%td
+						= user.confirmed_at.to_date if user.confirmed_at
+					%td
+						= user.sign_in_count if user.sign_in_count
+					%td
+						= user.last_sign_in_at.to_date if user.last_sign_in_at
+					%td
+						= user.roles.first.name.titleize unless user.roles.first.nil?
+					%td
+						%a{:href=>"#role-options-#{user.id}", :class => "btn btn-warning btn-xs", :type=>"button",:data => {:toggle =>"modal"}}
+							Change Role
+						= render user
+
+					%td
+						= link_to("Delete User", dashboard_user_path(user), :data=>{:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-danger btn-xs") unless user == current_user

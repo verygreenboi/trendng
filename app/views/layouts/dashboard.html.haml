@@ -22,7 +22,7 @@
 		- if devise_controller?
 			.container.devise
 				.row
-					%aside.col-md-3
+					%aside.col-md-2
 						- unless devise_controller?
 							= render 'layouts/dash/aside'
 					.col-md-9
@@ -31,10 +31,10 @@
 		- else
 			.container
 				.row
-				%aside.col-md-3
+				%aside.col-md-2
 					- unless devise_controller?
 						= render 'layouts/dash/aside'
-				.col-md-9
+				.col-md-10
 					= yield
 				= debug(params) if Rails.env.development?
 		%footer
