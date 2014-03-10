@@ -4,6 +4,6 @@ class ConfirmationsController < Devise::PasswordsController
 
 	# POST
 	def create
-		self.resource = 
+		
 	end
 end
