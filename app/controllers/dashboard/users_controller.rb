@@ -39,8 +39,9 @@ class Dashboard::UsersController < ApplicationController
 
   def invite
     authorize! :invite, @user, :message => "Not authorized as an administrator"
-    user = User.find(params[:id]).send_confirmation_instructions
-    redirect_to :back, :only_path => true, :notice => "Invitation Sent to #{@user.email}"
+    user = User.find(params[:id])
+    user.send_confirmation_instructions
+    redirect_to dashboard_users_path, :only_path => true, :notice => "Invitation Sent to #{user.email}"
   end
 
   def bulk_invite
@@ -50,7 +51,7 @@ class Dashboard::UsersController < ApplicationController
     users.each do |user|
       user.send_confirmation_instructions
     end
-    redirect_to :back, :only_path => true, :notice => "Sent invitations to #{count} users."
+    redirect_to dashboard_users_path, :only_path => true, :notice => "Sent invitations to #{count} users."
   end
 
   private
