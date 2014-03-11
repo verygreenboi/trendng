@@ -10,18 +10,12 @@
 #home{
 	body {
 	  background-color: #f2f2f2;
-	  font-family: 'Lato', sans-serif;
-	  font-weight: 300;
-	  font-size: 16px;
-	  color: #555;
-	  -webkit-font-smoothing: antialiased;
-	  -webkit-overflow-scrolling: touch;
 	}
 
 	/* Titles */
 
 	h1, h2, h3, h4, h5, h6 {
-	  font-family: 'Lato', sans-serif;
+	  font-family: 'latolight', sans-serif;
 	  font-weight: 300;
 	  color: #333;
 	}
@@ -96,10 +90,12 @@
 	  .navbar-brand{
 	  	font-size: 18px;
 			line-height: 20px;
+			b{
+				font-family: latoblack;
+			}
 	  }
 	  .navbar-brand, .navbar-nav > li > a {
 	    color: white;
-	    font-family: 'Lato', sans-serif;
 	  }
 	}
 
