@@ -3,6 +3,7 @@
 		.row
 			.col-lg-6
 				%h1 Make Twitter work for You!
-				= render 'layouts/invite_form'
+				#join.col-lg-6
+					= link_to "Join", new_user_registration_path,  class: 'join-btn btn btn-warning btn-lg btn-block', :data => {:no_turbolink => "true"}
 			.col-lg-6
 				= image_tag "ipad-hand.png", class: 'img-responsive'

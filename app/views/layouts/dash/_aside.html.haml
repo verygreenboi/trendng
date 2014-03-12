@@ -12,10 +12,11 @@
 		%a
 			%i.glyphicon.glyphicon-list-alt
 			Reports
-	%li
-		%a{:href => "#{dashboard_users_url}"}
-			%i.glyphicon.glyphicon-user
-			Manage Users
+	- if current_user.has_role? :admin
+		%li
+			%a{:href => "#{dashboard_users_url}"}
+				%i.glyphicon.glyphicon-user
+				Manage Users
 	%li
 		%a
 			%i.glyphicon.glyphicon-briefcase

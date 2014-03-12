@@ -103,7 +103,7 @@ Devise.setup do |config|
   # able to access the website for two days without confirming their account,
   # access will be blocked just in the third day. Default is 0.days, meaning
   # the user cannot access the website without confirming their account.
-  # config.allow_unconfirmed_access_for = 2.days
+  # config.allow_unconfirmed_access_for = 0
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -117,7 +117,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed new email is stored in
   # unconfirmed email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  # config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [ :email ]
@@ -228,6 +228,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

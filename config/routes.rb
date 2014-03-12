@@ -13,8 +13,7 @@ Trendng::Application.routes.draw do
   end
   devise_scope :user do
   	root :to => "home#index"
-  	match 'user/confirmation' => 'confirmations#update', via: :put, :as => :update_user_confirmation
 	end
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks"}
   resources :users, only: [:show, :create]
 end

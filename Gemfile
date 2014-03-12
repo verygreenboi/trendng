@@ -16,10 +16,12 @@ gem 'haml-rails'
 gem 'rolify'
 gem 'simple_form'
 gem 'newrelic_rpm'
+gem 'omniauth-twitter'
 gem 'pg'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+gem 'whenever', :require => false
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
