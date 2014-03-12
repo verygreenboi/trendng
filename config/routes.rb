@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Trendng::Application.routes.draw do
 	namespace :dashboard do
 		match "", to: 'dashboard#index', via: :get 
@@ -8,6 +9,7 @@ Trendng::Application.routes.draw do
 	end
 	authenticated :user do
     root to: "dashboard/dashboard#index", as: :authenticated_root
+    mount Sidekiq::Web => '/sidekiq'
   end
   devise_scope :user do
   	root :to => "home#index"
