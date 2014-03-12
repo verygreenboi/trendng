@@ -9,7 +9,7 @@ Trendng::Application.routes.draw do
 	end
 	authenticated :user do
     root to: "dashboard/dashboard#index", as: :authenticated_root
-    mount Sidekiq::Web => '/sidekiq'
+    # mount Sidekiq::Web => '/sidekiq'
   end
   devise_scope :user do
   	root :to => "home#index"
