@@ -70,8 +70,14 @@ Trendng::Application.configure do
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners.
+   config.action_mailer.smtp_settings = {
+      :address   => "smtp.mailgun.org",
+      :port      => 587,
+      :user_name => ENV["MAILGUN_SMTP_LOGIN"],
+      :password  => ENV["MAILGUN_SMTP_PASSWORD"]
+    }
   config.active_support.deprecation = :notify  # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'example.com' }
+  config.action_mailer.default_url_options = { :host => ENV['DOMAIN'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
