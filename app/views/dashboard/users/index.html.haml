@@ -35,7 +35,7 @@
 			- @users.each do |user|
 				%tr
 					%td
-						= link_to user.name, dashboard_user_path(user)
+						= link_to user.username, dashboard_user_path(user)
 					%td
 						= user.email
 					%td
