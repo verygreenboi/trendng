@@ -11,10 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312085115) do
+ActiveRecord::Schema.define(version: 20140312170056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dashboard_ads", force: true do |t|
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dashboard_campaigns_id"
+  end
+
+  add_index "dashboard_ads", ["dashboard_campaigns_id"], name: "index_dashboard_ads_on_dashboard_campaigns_id", using: :btree
+
+  create_table "dashboard_campaigns", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "emails", force: true do |t|
+    t.string   "from"
+    t.string   "to"
+    t.string   "subject"
+    t.string   "direction"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "users_id"
+  end
+
+  add_index "emails", ["users_id"], name: "index_emails_on_users_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -26,6 +55,16 @@ ActiveRecord::Schema.define(version: 20140312085115) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "tweets", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dashboard_ads_id"
+    t.integer  "users_id"
+  end
+
+  add_index "tweets", ["dashboard_ads_id"], name: "index_tweets_on_dashboard_ads_id", using: :btree
+  add_index "tweets", ["users_id"], name: "index_tweets_on_users_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

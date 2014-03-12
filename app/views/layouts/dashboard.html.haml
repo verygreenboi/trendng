@@ -24,20 +24,21 @@
 					%aside.col-md-2
 						- unless devise_controller?
 							= render 'layouts/dash/aside'
-					.col-md-9
+					.col-md-9.main
 						= yield
-					= debug(params) if Rails.env.development?
 		- else
 			.container
 				.row
 				%aside.col-md-2
 					- unless devise_controller?
 						= render 'layouts/dash/aside'
-				.col-md-10
+				.col-md-10.main
 					= yield
-				= debug(params) if Rails.env.development?
 		#loading
 			Loading...
 		%footer
+			.container
+				%p.centered
+					App by Pixel 99. Theme designed by BlackTie.co - Attribution License 3.0
 		-# JS
 		= javascript_include_tag "application", "data-turbolinks-track" => true

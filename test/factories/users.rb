@@ -21,6 +21,8 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
 #  username               :string(255)
+#  provider               :string(255)
+#  uid                    :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

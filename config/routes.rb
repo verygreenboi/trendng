@@ -6,6 +6,10 @@ Trendng::Application.routes.draw do
 		resources :users do
 			get 'invite', :on => :member
 		end
+    resources :campaigns
+    resources :ads
+    resources :tweets
+    resources :emails
 	end
 	authenticated :user do
     root to: "dashboard/dashboard#index", as: :authenticated_root

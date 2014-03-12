@@ -1,6 +1,7 @@
 class Dashboard::UsersController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource :only => [:index, :show, :new]
+  # include ActionController::Live
   def index
   end
 
