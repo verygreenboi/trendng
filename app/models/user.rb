@@ -23,6 +23,8 @@
 #  username               :string(255)
 #  provider               :string(255)
 #  uid                    :string(255)
+#  oauth_token            :string(255)
+#  oauth_secret           :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -61,6 +63,8 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.username = auth.info.nickname
+      user.oauth_token = auth["credentials"]["token"]
+      user.oauth_secret = auth["credentials"]["secret"]
     end
   end
 
@@ -89,7 +93,11 @@ class User < ActiveRecord::Base
     end
   end
 
-
+  def twitter
+    if provider == "twitter"
+      @twitter ||= Twitter::Client.new(oauth_token: oauth_token, oauth_secret: oauth_secret)
+    end
+  end
 
   private
 

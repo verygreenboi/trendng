@@ -23,6 +23,8 @@
 #  username               :string(255)
 #  provider               :string(255)
 #  uid                    :string(255)
+#  oauth_token            :string(255)
+#  oauth_secret           :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
