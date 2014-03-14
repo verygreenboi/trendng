@@ -17,6 +17,7 @@ gem 'rolify'
 gem 'simple_form'
 gem 'newrelic_rpm'
 gem 'omniauth-twitter'
+gem 'twitter'
 gem 'pg'
 gem 'sidekiq'
 gem 'sinatra', require: false
