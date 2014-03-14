@@ -94,12 +94,16 @@ class User < ActiveRecord::Base
   end
 
   def twitter
+    
     if provider == "twitter"
-      @twitter ||= Twitter::REST::Client.new(oauth_token: oauth_token, oauth_secret: oauth_secret) do |config|
+      twitter = Twitter::REST::Client.new do |config|
         config.consumer_key  = ENV['TREND_TWITTER_CONSUMER_KEY']
         config.consumer_secret = ENV['TREND_TWITTER_CONSUMER_SECRET']
+        config.access_token = oauth_token
+        config.access_token_secret = oauth_secret
       end
     end
+
   end
 
   private
